@@ -35,3 +35,8 @@
     ```
     node src/bot.js
     ```
+
+### Help, Notices, and whatnot.
+ The bans.json file will not matter to you as the tool gets the ban list from my GitHub repository, and not that file.
+
+ If you want to add users to this you should submit an issue to the GitHub with proof of the user, and providing the UserID, Or fork the GitHub repository, and adding to the bans.json file, and adding your proof to the message.
