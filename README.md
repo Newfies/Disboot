@@ -6,7 +6,7 @@
  For now, this project will require you to setup this on your own to self host.
  
  1. Run 
-    
+    ```
     git clone https://github.com/Newfies/Disboot.gitz
- 
+    ```
  You can also download this GitHub repo by going to Code > Download ZIP 
