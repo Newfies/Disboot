@@ -9,4 +9,4 @@
     ```
     git clone https://github.com/Newfies/Disboot.gitz
     ```
- > You can also download this GitHub repo by going to Code > Download ZIP 
+    > You can also download this GitHub repo by going to Code > Download ZIP 
