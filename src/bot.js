@@ -76,7 +76,7 @@ client.on("ready", async () => {
 
   // Set bot activity status
   client.user.setActivity({
-    name: `For Suspicious Accounts`,
+    name: `Banning Bad Accounts With Disboot`,
     type: ActivityType.Watching,
   });
 });
