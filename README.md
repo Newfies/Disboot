@@ -9,4 +9,14 @@
     ```
     git clone https://github.com/Newfies/Disboot.gitz
     ```
-    > You can also download this GitHub repo by going to Code > Download ZIP 
+    > You can also download this GitHub repo by going to Code > Download ZIP, however you will still need to use your terminal to setup and use this.
+
+ 2. Run the following in your terminal
+    ```
+    cd Disboot
+    ```
+    
+ 3. Run the following in your terminal
+    ```
+    npm install
+    ```
