@@ -21,10 +21,10 @@
     npm install
     ```
 
- -  Create a new file with the name of **.env** and open it
+ -  Create a new file with the name of **.env** and open it and add the following line to your **.env** file
 
- -  Add the following line to your **.env** file
     **TOKEN={YOUR DISCORD BOT TOKEN HERE}**
+    
     > You will need to enter your Discord Bot Token, if you do not have a bot setup currently, simply head over to https://discord.com/developers/applications and make a new bot.
 
  -  Then when your ready to use Disboot run the following in your terminal
