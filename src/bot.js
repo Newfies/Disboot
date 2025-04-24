@@ -91,7 +91,7 @@ function fetchBanList() {
   return new Promise((resolve, reject) => {
     https
       .get(
-        "https://raw.githubusercontent.com/Newfies/Disboot/refs/heads/main/bans.json",
+        "https://raw.githubusercontent.com/Newfies/Disboot/refs/heads/main/bans.json", // My fuggin epic "database"
         (res) => {
           let data = "";
           res.on("data", (chunk) => {
