@@ -1,6 +1,12 @@
 ## Disboot v1.0.0
  Disboot, a bot designed to ban users that have been flagged suspicious. The intent of this bot is to ban accounts that join via Disboard and start messaging users for self promotion, paying for art, etc.
 
+## Updates
+ -  Released v1.0.0 of Disboot!
+
+## Plans
+ - Adding a option to auto run the script at a duration to autoban added users.
+ - Permission checking.
 
 ### How To Setup?
  For now, this project will require you to setup this on your own to self host.
@@ -40,3 +46,6 @@
  The bans.json file will not matter to you as the tool gets the ban list from my GitHub repository, and not that file.
 
  If you want to add users to this you should submit an issue to the GitHub with proof of the user, and providing the UserID, Or fork the GitHub repository, and adding to the bans.json file, and adding your proof to the message.
+
+### How To Use?
+ After setting up and running the bot as shown above, simply add your bot to the server if it isnt already and just use the /run command
