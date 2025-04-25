@@ -13,7 +13,7 @@
  
  -  Run the following in your terminal
     ```
-    git clone https://github.com/Newfies/Disboot.gitz
+    git clone https://github.com/Newfies/Disboot.git
     ```
     > You can also download this GitHub repo by going to Code > Download ZIP, however you will still need to use your terminal to setup and use this.
 
