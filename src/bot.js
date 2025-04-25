@@ -94,8 +94,6 @@ client.on("ready", async () => {
     name: `Banning Bad Accounts With Disboot`,
     type: ActivityType.Watching,
   });
-
-  autoban();
 });
 
 // Sleep utility
