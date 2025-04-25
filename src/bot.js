@@ -25,9 +25,9 @@ if (!configs) {
 if (configs.autoban){
     if (configs.autoban === true) {
         setInterval(() => autoban(), 3600000);
-        log(`Config.ini Autoban Script registered to be ran`);
+        log(`Config.ini Autoban Script registered to be ran`, 1);
     } else if (configs.autoban === false) {
-        log(`Config.ini Autoban Script registered to not be ran`);
+        log(`Config.ini Autoban Script registered to not be ran`, 1);
         return;
     } else {
         log(`config.ini autoban not found or not a boolean.`, 3);
