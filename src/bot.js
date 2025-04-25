@@ -1,24 +1,37 @@
 // Packages and Requires
 const dotenv = require("dotenv").config();
-const { Client, Events, GatewayIntentBits, EmbedBuilder, SlashCommandBuilder, PermissionsBitField, 
-        Permissions, Embed, Activity, ActivityType, ButtonBuilder, ButtonStyle, ActionRowBuilder, } = require("discord.js");
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent,
-    GatewayIntentBits.GuildMembers,
-  ],
-});
+const ini = require("ini");
+const fs = require('fs');
 const { exec } = require("child_process");
 const pm2 = require("pm2");
 const chalk = require("chalk");
 const https = require("https");
+const { Client, Events, GatewayIntentBits, EmbedBuilder, SlashCommandBuilder, PermissionsBitField, 
+        Permissions, Embed, Activity, ActivityType, ButtonBuilder, ButtonStyle, ActionRowBuilder, } = require("discord.js");
+const client = new Client({ intents: [ GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, 
+        GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers, ], });
 
-// Process.env Variables
+// Script Variables
 const TOKEN = process.env.TOKEN;
+const configFile = fs.readFileSync('../config.ini', 'utf-8');
+const configs = ini.parse(configFile).Config;
 
-// Variables
+// Config.ini
+if (!configs) {
+    log(`config.ini file not found.`, 3);
+    process.exit(1);
+}
+
+if (configs.autoban){
+    if (configs.autoban === true) {
+        setInterval(() => ban(), 3600000);
+    } else if (configs.autoban === false) {
+        return;
+    } else {
+        log(`config.ini autoban not found or not a boolean.`, 3);
+        process.exit(1);
+    }    
+}
 
 // Custom Functions
 // Timestamp System
@@ -151,6 +164,32 @@ client.on("interactionCreate", async (interaction) => {
     }
   }
 });
+
+// Scripted Actions
+async function ban(interaction) {
+    try {
+        const banList = await fetchBanList();
+        for (const entry of banList) {
+            const userId = entry.userId;
+            const reason = entry.reason;
+
+            try {
+                await interaction.guild.members.ban(userId, { reason });
+                log(`Banned ${userId} for "${reason}"`, 1);
+            } catch (err) {
+                log(`Failed to ban ${userId}: ${err.message}`, 3);
+            }
+
+            await sleep(1500);
+        }
+        await interaction.editReply({ content: `Ban process complete.` });
+    } catch (err) {
+        await interaction.editReply({
+            content: `Failed to fetch ban list: ${err.message}`,
+        });
+        log(`Failed to fetch or process ban list: ${err}`, 3);
+    }
+}
 
 // Login To Bot
 client.login(TOKEN);
