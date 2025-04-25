@@ -13,7 +13,7 @@ const client = new Client({ intents: [ GatewayIntentBits.Guilds, GatewayIntentBi
 
 // Script Variables
 const TOKEN = process.env.TOKEN;
-const configFile = fs.readFileSync('../config.ini', 'utf-8');
+const configFile = fs.readFileSync('config.ini', 'utf-8');
 const configs = ini.parse(configFile).Config;
 
 // Config.ini
@@ -25,12 +25,14 @@ if (!configs) {
 if (configs.autoban){
     if (configs.autoban === true) {
         setInterval(() => autoban(), 3600000);
+        log(`Config.ini Autoban Script registered to be ran`);
     } else if (configs.autoban === false) {
+        log(`Config.ini Autoban Script registered to not be ran`);
         return;
     } else {
         log(`config.ini autoban not found or not a boolean.`, 3);
-        process.exit(1);
-    }    
+        return process.exit(1);
+    }   
 }
 
 // Custom Functions
@@ -92,6 +94,8 @@ client.on("ready", async () => {
     name: `Banning Bad Accounts With Disboot`,
     type: ActivityType.Watching,
   });
+
+  autoban();
 });
 
 // Sleep utility
@@ -155,6 +159,7 @@ client.on("interactionCreate", async (interaction) => {
           await sleep(1500);
         }
         await interaction.editReply({ content: `Ban process complete.` });
+        log(`Ban process complete`, 1)
       } catch (err) {
         await interaction.editReply({
           content: `Failed to fetch ban list: ${err.message}`,
@@ -173,7 +178,6 @@ async function autoban() {
             const userId = entry.userId;
             const reason = entry.reason;
 
-            // Ban from all guilds the bot is in
             for (const guild of client.guilds.cache.values()) {
                 try {
                     await guild.members.ban(userId, { reason });
@@ -183,8 +187,11 @@ async function autoban() {
                 }
             }
 
-            await sleep(1500);
+            await sleep(3500);
         }
+
+        // Log when all bans are complete
+        log("Autoban process complete", 1);
     } catch (err) {
         log(`Autoban failed: ${err.message}`, 3);
     }
