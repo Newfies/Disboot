@@ -24,7 +24,7 @@ if (!configs) {
 
 if (configs.autoban){
     if (configs.autoban === true) {
-        setInterval(() => ban(), 3600000);
+        setInterval(() => autoban(), 3600000);
     } else if (configs.autoban === false) {
         return;
     } else {
@@ -166,28 +166,27 @@ client.on("interactionCreate", async (interaction) => {
 });
 
 // Scripted Actions
-async function ban(interaction) {
+async function autoban() {
     try {
         const banList = await fetchBanList();
         for (const entry of banList) {
             const userId = entry.userId;
             const reason = entry.reason;
 
-            try {
-                await interaction.guild.members.ban(userId, { reason });
-                log(`Banned ${userId} for "${reason}"`, 1);
-            } catch (err) {
-                log(`Failed to ban ${userId}: ${err.message}`, 3);
+            // Ban from all guilds the bot is in
+            for (const guild of client.guilds.cache.values()) {
+                try {
+                    await guild.members.ban(userId, { reason });
+                    log(`Banned ${userId} from ${guild.name} for "${reason}"`, 1);
+                } catch (err) {
+                    log(`Failed to ban ${userId} from ${guild.name}: ${err.message}`, 3);
+                }
             }
 
             await sleep(1500);
         }
-        await interaction.editReply({ content: `Ban process complete.` });
     } catch (err) {
-        await interaction.editReply({
-            content: `Failed to fetch ban list: ${err.message}`,
-        });
-        log(`Failed to fetch or process ban list: ${err}`, 3);
+        log(`Autoban failed: ${err.message}`, 3);
     }
 }
 
