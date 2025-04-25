@@ -75,7 +75,8 @@ function SCB(name, desc) {
 
 // Client Slash Command Makers
 const ping = SCB("ping", "Simple ping command!");
-const run = SCB("run", "This starts banning the users");
+const ban = SCB("ban", "This starts banning the users");
+const report = SCB("report", "Report a user to be added to Disboot");
 
 // Client.On's
 // Ready
@@ -86,8 +87,11 @@ client.on("ready", async () => {
   await client.application.commands.create(ping); // Command for /ping
   log(`/ping command registered`, 1);
 
-  await client.application.commands.create(run); // Command for /run
-  log(`/run command registered`, 1);
+  await client.application.commands.create(ban); // Command for /ban
+  log(`/ban command registered`, 1);
+
+  await client.application.commands.create(report); // Command for /report
+  log(`/report command registered`, 1);
 
   // Set bot activity status
   client.user.setActivity({
@@ -138,7 +142,7 @@ client.on("interactionCreate", async (interaction) => {
     }
   }
 
-  if (interaction.commandName === "run") {
+  if (interaction.commandName === "ban") {
     if (!interaction.replied && !interaction.deferred) {
       await interaction.deferReply({ ephemeral: true });
       try {
@@ -164,6 +168,15 @@ client.on("interactionCreate", async (interaction) => {
         });
         log(`Failed to fetch or process ban list: ${err}`, 3);
       }
+    }
+  }
+
+  if (interaction.commandName === "report") {
+    if (!interaction.replied && !interaction.deferred) {
+      await interaction.reply({
+        content: "To report a user, please head to [The GitHub Issue Page](https://github.com/Newfies/Disboot/issues/new?title=ENTER%20USER%20ID(S)%20HERE&body=EXPLAIN%20WHAT%20THE%20USER%20DID,%20AND%20PROVIDE%20PROOF&labels=Report)",
+        ephemeral: true,
+      });
     }
   }
 });
