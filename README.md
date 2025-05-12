@@ -1,9 +1,9 @@
-## Disboot v1.3.0
+## Disboot v1.3.1
  Disboot, a bot designed to ban users that have been flagged suspicious. The intent of this bot is to ban accounts that join via Disboard and start messaging users for self promotion, paying for art, etc.
 
 ## Updates
- -  Released v1.3.0 of Disboot
  -  Added an option to automatically ban users on a timer
+ -  Removed some comments on **bot.js**
 
 ## Plans
  - Permission checking.

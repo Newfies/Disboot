@@ -100,7 +100,7 @@ client.on("ready", async () => {
   });
 });
 
-// Sleep utility
+// Sleep Function
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -131,7 +131,7 @@ function fetchBanList() {
 
 // interactionCreate
 client.on("interactionCreate", async (interaction) => {
-  if (!interaction.isCommand()) return; // If its not a command it returns
+  if (!interaction.isCommand()) return;
 
   if (interaction.commandName === "ping") {
     if (!interaction.replied && !interaction.deferred) {
@@ -201,7 +201,6 @@ async function autoban() {
             await sleep(3500);
         }
 
-        // Log when all bans are complete
         log("Autoban process complete", 1);
     } catch (err) {
         log(`Autoban failed: ${err.message}`, 3);
