@@ -169,7 +169,7 @@ client.on("interactionCreate", async (interaction) => {
 
 if (interaction.commandName === "add") {
     if (!interaction.replied && !interaction.deferred) {
-      await interaction.deferReply({ ephemeral: true });
+      await interaction.deferReply({ flags: 64 });
 
       const userOption = interaction.options.getUser("user");
       const userIdOption = interaction.options.getString("userid");
