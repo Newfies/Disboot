@@ -1,6 +1,7 @@
 // Packages and Requires
 const dotenv = require("dotenv").config();
 const fs = require('fs');
+const ini = require("ini");
 const { exec } = require("child_process");
 const pm2 = require("pm2");
 const chalk = require("chalk");
@@ -12,6 +13,29 @@ const client = new Client({ intents: [ GatewayIntentBits.Guilds, GatewayIntentBi
 
 // Script Variables
 const TOKEN = process.env.TOKEN;
+const configFile = fs.readFileSync('config.ini', 'utf-8');
+const configs = ini.parse(configFile).Config;
+
+// Config.ini
+if (!configs) {
+    log(`config.ini file not found.`, 3);
+    process.exit(1);
+}
+
+/*
+if (configs.autoban){
+    if (configs.autoban === true) {
+        setInterval(() => autoban(), 3600000);
+        log(`Config.ini Autoban Script registered to be ran`, 1);
+    } else if (configs.autoban === false) {
+        log(`Config.ini Autoban Script registered to not be ran`, 1);
+        return;
+    } else {
+        log(`config.ini autoban not found or not a boolean.`, 3);
+        return process.exit(1);
+    }   
+}
+*/
 
 // Custom Functions
 // Timestamp System
