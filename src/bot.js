@@ -23,6 +23,27 @@ if (!configs) {
 }
 
 /*
+
+if (configs.checkForUpdates){
+  if (configs.checkForUpdates == 'true'){
+    // code goes here (obviously)
+  }
+  if (configs.checkForUpdates == 'false'){
+    // another obvious code spot
+  }
+  if (!configs.checkForUpdates == 'true' || !configs.checkForUpdates == 'false'){
+    // completely fill computer with virus, because I literally gave bro the options to pick from in the config.ini file
+  }
+  else {
+    // return error for not having a checkForUpdates line
+  }
+}
+
+^^ keep as, replace with ===, change  3rd to else maybe for error catching
+
+*/
+
+/*
 if (configs.autoban){
     if (configs.autoban === true) {
         setInterval(() => autoban(), 3600000);
