@@ -32,7 +32,7 @@ if (configs.checkForUpdates){
     // another obvious code spot
   }
   if (!configs.checkForUpdates == 'true' || !configs.checkForUpdates == 'false'){
-    // completely fill computer with virus, because I literally gave bro the options to pick from in the config.ini file
+    // completely fill computer with virus, because I literally gave bro the options to pick from in the config.ini file (its a joke... unless...)
   }
   else {
     // return error for not having a checkForUpdates line
