@@ -1,12 +1,13 @@
-## Disboot v1.4.2
+## Disboot v1.4.3
  Disboot, a bot designed to ban users that have been flagged suspicious. The intent of this bot is to ban accounts that join via Disboard and start messaging users for self promotion, paying for art, etc.
 
 ## Updates
  -  Removed the timer feature, for now the config.ini is not needed.
  -  Added a new feature to easily add users to the ban list :D
+ -  Changed the /add list to add "[DISBOOT]" to the end
 
 ## Plans
- - Permission checking.
+ - Permission checking. This will bring back the config.ini file.
 
 ### How To Setup?
  For now, this project will require you to setup this on your own to self host.

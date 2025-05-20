@@ -190,7 +190,7 @@ if (interaction.commandName === "add") {
 
       const newEntry = {
         userId: finalUserId,
-        reason: reason
+        reason: `${reason} [DISBOOT]`
       };
 
       try {
