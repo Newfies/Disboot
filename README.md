@@ -8,6 +8,7 @@
 
 ## Plans
  - Permission checking. This will bring back the config.ini file.
+ - Version checking. This will also add a new config.ini to ignore updates.
 
 ### How To Setup?
  For now, this project will require you to setup this on your own to self host.
