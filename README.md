@@ -6,6 +6,7 @@
  -  Added a new feature to easily add users to the ban list :D
  -  Changed the /add list to add "[DISBOOT]" to the end.
  -  Added the config.ini script back but it isn't looking for anything until I add something.
+ -  Added some commented things that will be coming to Disboot, check config.ini
 
 ## Plans
  - Permission checking. This will bring back the config.ini file.
@@ -46,7 +47,7 @@
     ```
 
 ### Help, Notices, and whatnot.
- The bans.json file will not matter to you as the tool gets the ban list from my GitHub repository, and not that file.
+ Unless you use your own custom banlist, The bans.json file will not matter to you as the tool gets the ban list from my GitHub repository, and not that file.
 
  If you want to add users to this you should submit an issue to the GitHub with proof of the user, and providing the UserID, Or fork the GitHub repository, and adding to the bans.json file, and adding your proof to the message.
 
